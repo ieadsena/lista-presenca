@@ -1,6 +1,8 @@
 /* =========================================================
+   ASSEMBLEIA DE DEUS
+   SENA MADUREIRA
    LISTA DE PRESENÇA
-   ASSEMBLEIA DE DEUS SENA MADUREIRA
+   TEMA AZUL + DOURADO
    ========================================================= */
 
 
@@ -10,53 +12,38 @@
 
 :root {
 
-  --bg: #06100e;
+  /* AZUL PRINCIPAL */
+  --background: #061326;
+  --background-two: #0a1e3a;
+  --blue: #0d2d55;
+  --blue-light: #164a82;
+  --blue-bright: #1d5fa7;
 
-  --bg-2: #0a1714;
-
-  --card: rgba(15, 29, 25, 0.78);
-
+  /* CARD */
+  --card: rgba(9, 27, 50, 0.97);
   --card-border: rgba(255, 255, 255, 0.11);
 
+  /* DOURADO */
+  --gold: #e7c568;
+  --gold-light: #f5dda0;
+  --gold-dark: #a98232;
 
-  /* Dourado */
+  /* TEXTO */
+  --white: #ffffff;
+  --text: #f5f7fa;
+  --muted: #9eacbb;
 
-  --gold: #e8c46a;
+  /* INPUT */
+  --input-background: rgba(255, 255, 255, 0.055);
+  --input-border: rgba(255, 255, 255, 0.14);
 
-  --gold-light: #f6dda0;
-
-  --gold-dark: #a98132;
-
-
-  /* Texto */
-
-  --white: #fffdf7;
-
-  --text: #f6f5ef;
-
-  --muted: #aab5b0;
-
-
-  /* Inputs */
-
-  --input: rgba(255, 255, 255, 0.055);
-
-  --input-border: rgba(255, 255, 255, 0.13);
-
-
-  /* Feedback */
-
+  /* FEEDBACK */
   --success: #8ee0ae;
-
   --error: #ff9b9b;
 
-
-  /* Bordas */
-
-  --radius-card: 30px;
-
-  --radius-input: 15px;
-
+  /* BORDAS */
+  --card-radius: 26px;
+  --input-radius: 14px;
 }
 
 
@@ -65,13 +52,9 @@
    ========================================================= */
 
 * {
-
   margin: 0;
-
   padding: 0;
-
   box-sizing: border-box;
-
 }
 
 
@@ -80,11 +63,9 @@
    ========================================================= */
 
 html {
-
+  width: 100%;
   min-height: 100%;
-
-  background: var(--bg);
-
+  background: var(--background);
 }
 
 
@@ -94,6 +75,7 @@ html {
 
 body {
 
+  width: 100%;
   min-height: 100vh;
 
   font-family:
@@ -103,128 +85,96 @@ body {
 
   color: var(--text);
 
-
   background:
 
     radial-gradient(
-      circle at 50% -10%,
-      rgba(50, 101, 78, .34),
-      transparent 36%
+      circle at 50% -15%,
+      rgba(35, 101, 171, 0.55),
+      transparent 42%
+    ),
+
+    radial-gradient(
+      circle at 100% 100%,
+      rgba(19, 64, 112, 0.38),
+      transparent 38%
     ),
 
     linear-gradient(
       145deg,
-      var(--bg),
-      var(--bg-2)
+      #061326,
+      #0a1e3a
     );
-
-
-  -webkit-font-smoothing: antialiased;
 
   overflow-x: hidden;
 
+  -webkit-font-smoothing: antialiased;
 }
 
 
 /* =========================================================
-   FUNDO
+   FUNDO DECORATIVO
    ========================================================= */
 
-.background,
-.grid {
+.background-decoration {
 
   position: fixed;
 
   inset: 0;
 
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
   pointer-events: none;
 
+  z-index: 0;
 }
 
 
 /* =========================================================
-   GRID
+   LUZES AZUIS
    ========================================================= */
 
-.grid {
-
-  opacity: .20;
-
-  background-image:
-
-    linear-gradient(
-      rgba(255,255,255,.035) 1px,
-      transparent 1px
-    ),
-
-    linear-gradient(
-      90deg,
-      rgba(255,255,255,.035) 1px,
-      transparent 1px
-    );
-
-
-  background-size: 42px 42px;
-
-
-  mask-image:
-    linear-gradient(
-      to bottom,
-      black,
-      transparent 80%
-    );
-
-}
-
-
-/* =========================================================
-   BRILHOS
-   ========================================================= */
-
-.glow {
+.light {
 
   position: absolute;
 
   border-radius: 50%;
 
-  filter: blur(90px);
+  pointer-events: none;
 
-  opacity: .30;
+  filter: blur(100px);
 
+  opacity: 0.28;
 }
 
 
-/* Brilho esquerdo */
+/* Luz azul superior */
 
-.glow-1 {
+.light-one {
 
-  width: 380px;
+  width: 300px;
+  height: 300px;
 
-  height: 380px;
-
-  top: -160px;
-
+  top: -150px;
   left: -100px;
 
-  background: #255d47;
-
+  background: #1765a8;
 }
 
 
-/* Brilho direito */
+/* Luz azul inferior */
 
-.glow-2 {
+.light-two {
 
-  width: 330px;
+  width: 280px;
+  height: 280px;
 
-  height: 330px;
+  right: -140px;
+  bottom: -140px;
 
-  right: -130px;
-
-  bottom: -100px;
-
-  background: #806127;
-
+  background: #123e70;
 }
 
 
@@ -238,16 +188,17 @@ body {
 
   z-index: 1;
 
+  width: 100%;
+
   min-height: 100vh;
+  min-height: 100svh;
 
   display: flex;
 
+  justify-content: center;
   align-items: center;
 
-  justify-content: center;
-
-  padding: 34px 18px;
-
+  padding: 25px 16px;
 }
 
 
@@ -259,54 +210,51 @@ body {
 
   position: relative;
 
-  width: min(100%, 480px);
+  width: 100%;
+  max-width: 470px;
 
-  padding: 38px 42px 28px;
-
-
-  border: 1px solid var(--card-border);
-
-  border-radius: var(--radius-card);
-
+  padding: 34px 34px 25px;
 
   background:
 
     linear-gradient(
       145deg,
-      rgba(255,255,255,.065),
-      rgba(255,255,255,.025)
+      rgba(255,255,255,0.065),
+      rgba(255,255,255,0.025)
     ),
 
     var(--card);
 
+  border:
+    1px solid
+    var(--card-border);
+
+  border-radius:
+    var(--card-radius);
 
   box-shadow:
 
-    0 35px 90px rgba(0, 0, 0, .48),
+    0 30px 80px
+    rgba(0, 0, 0, 0.50),
 
-    inset 0 1px 0 rgba(255,255,255,.06);
+    0 0 60px
+    rgba(18, 74, 130, 0.10),
 
-
-  backdrop-filter: blur(24px);
-
-  -webkit-backdrop-filter: blur(24px);
-
-
-  animation:
-
-    cardIn
-    .75s
-    cubic-bezier(.2,.8,.2,1)
-    both;
-
+    inset 0 1px 0
+    rgba(255,255,255,0.06);
 
   overflow: hidden;
 
+  animation:
+    cardAppear
+    0.65s
+    ease-out
+    both;
 }
 
 
 /* =========================================================
-   LINHA DOURADA
+   LINHA DOURADA SUPERIOR
    ========================================================= */
 
 .top-line {
@@ -315,12 +263,10 @@ body {
 
   top: 0;
 
-  left: 15%;
-
-  right: 15%;
+  left: 12%;
+  right: 12%;
 
   height: 2px;
-
 
   background:
 
@@ -331,26 +277,25 @@ body {
       transparent
     );
 
-
   box-shadow:
-    0 0 22px rgba(232,196,106,.45);
-
+    0 0 20px
+    rgba(231,197,104,0.55);
 }
 
 
 /* =========================================================
-   ANIMAÇÃO CARD
+   ANIMAÇÃO
    ========================================================= */
 
-@keyframes cardIn {
+@keyframes cardAppear {
 
   from {
 
     opacity: 0;
 
     transform:
-      translateY(22px)
-      scale(.985);
+      translateY(18px)
+      scale(0.98);
 
   }
 
@@ -363,22 +308,6 @@ body {
       scale(1);
 
   }
-
-}
-
-
-/* =========================================================
-   MARCA
-   ========================================================= */
-
-.brand {
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-
 }
 
 
@@ -386,15 +315,34 @@ body {
    LOGO
    ========================================================= */
 
-.logo-wrap {
+.brand {
 
   width: 100%;
 
-  max-width: 350px;
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+}
+
+
+.logo-wrap {
+
+  width: 100%;
+  max-width: 330px;
 
   margin:
-    0 auto 13px;
+    0 auto 15px;
 
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+
+  background: transparent;
 }
 
 
@@ -403,20 +351,13 @@ body {
   display: block;
 
   width: 100%;
+  max-width: 330px;
 
   height: auto;
 
+  object-fit: contain;
 
-  filter:
-
-    drop-shadow(
-      0 8px 18px rgba(0,0,0,.28)
-    )
-
-    drop-shadow(
-      0 0 18px rgba(232,196,106,.08)
-    );
-
+  background: transparent;
 }
 
 
@@ -429,69 +370,63 @@ body {
   display: inline-flex;
 
   align-items: center;
+  justify-content: center;
 
   gap: 8px;
 
-
   padding:
-    7px 12px;
-
+    7px 13px;
 
   border:
     1px solid
-    rgba(232,196,106,.20);
-
+    rgba(231,197,104,0.27);
 
   border-radius: 999px;
 
-
-  color: var(--gold-light);
-
-
   background:
-    rgba(232,196,106,.07);
+    rgba(231,197,104,0.08);
 
+  color:
+    var(--gold-light);
 
   font-size: 11px;
 
   font-weight: 700;
 
-  letter-spacing: .65px;
+  letter-spacing: 0.7px;
 
   text-transform: uppercase;
-
 }
 
-
-/* Bolinha */
 
 .badge-dot {
 
   width: 6px;
-
   height: 6px;
+
+  flex-shrink: 0;
 
   border-radius: 50%;
 
-  background: var(--gold);
+  background:
+    var(--gold);
 
   box-shadow:
-    0 0 9px var(--gold);
-
+    0 0 10px
+    var(--gold);
 }
 
 
 /* =========================================================
-   TÍTULO
+   CABEÇALHO
    ========================================================= */
 
 .heading {
 
-  margin:
-    31px 0 27px;
-
   text-align: center;
 
+  margin:
+    29px 0 25px;
 }
 
 
@@ -501,7 +436,8 @@ body {
 
   margin-bottom: 8px;
 
-  color: var(--gold);
+  color:
+    var(--gold);
 
   font-size: 11px;
 
@@ -510,60 +446,63 @@ body {
   letter-spacing: 2px;
 
   text-transform: uppercase;
-
 }
 
+
+/* =========================================================
+   TÍTULO
+   ========================================================= */
 
 h1 {
 
   font-family:
     "Outfit",
+    Arial,
     sans-serif;
 
+  color:
+    var(--white);
 
-  color: var(--white);
-
-
-  font-size:
-    clamp(
-      29px,
-      7vw,
-      36px
-    );
-
+  font-size: 34px;
 
   line-height: 1.05;
 
-  letter-spacing: -1.3px;
-
   font-weight: 800;
 
+  letter-spacing: -1px;
+
+  text-shadow:
+    0 3px 20px
+    rgba(0, 0, 0, 0.25);
 }
 
 
+/* =========================================================
+   DESCRIÇÃO
+   ========================================================= */
+
 .heading p {
 
-  max-width: 355px;
+  max-width: 365px;
 
   margin:
     13px auto 0;
 
-
-  color: var(--muted);
+  color:
+    var(--muted);
 
   font-size: 14px;
 
-  line-height: 1.65;
-
+  line-height: 1.6;
 }
 
 
 .heading strong {
 
-  color: #d7ded9;
+  color:
+    #dce5ef;
 
   font-weight: 600;
-
 }
 
 
@@ -573,29 +512,31 @@ h1 {
 
 .field {
 
-  margin-bottom: 15px;
+  width: 100%;
 
+  margin-bottom: 15px;
 }
 
 
-/* LABEL */
+/* =========================================================
+   LABEL
+   ========================================================= */
 
 label {
 
   display: block;
 
   margin:
-    0 0 9px 3px;
+    0 0 8px 2px;
 
-
-  color: #dce2de;
+  color:
+    #dce5ef;
 
   font-size: 12px;
 
   font-weight: 700;
 
-  letter-spacing: .4px;
-
+  letter-spacing: 0.4px;
 }
 
 
@@ -607,34 +548,33 @@ label {
 
   position: relative;
 
+  width: 100%;
 }
 
 
 /* =========================================================
-   ÍCONE DO INPUT
+   ÍCONE
    ========================================================= */
 
 .input-icon {
 
   position: absolute;
 
-  z-index: 1;
+  z-index: 2;
 
   top: 50%;
-
-  left: 17px;
+  left: 16px;
 
   width: 20px;
-
   height: 20px;
 
   transform:
     translateY(-50%);
 
-
   fill: none;
 
-  stroke: #89968f;
+  stroke:
+    #8195aa;
 
   stroke-width: 1.8;
 
@@ -642,11 +582,18 @@ label {
 
   stroke-linejoin: round;
 
-
   pointer-events: none;
 
-  transition: .25s ease;
+  transition:
+    stroke 0.2s ease;
+}
 
+
+.input-wrap:focus-within
+.input-icon {
+
+  stroke:
+    var(--gold);
 }
 
 
@@ -656,113 +603,79 @@ label {
 
 input {
 
+  display: block;
+
   width: 100%;
-
-  min-height: 56px;
-
+  height: 56px;
 
   padding:
-    0 17px 0 49px;
-
+    0 16px 0 48px;
 
   border:
     1px solid
     var(--input-border);
 
+  border-radius:
+    var(--input-radius);
 
   outline: none;
 
-
-  border-radius:
-    var(--radius-input);
-
-
   background:
-    var(--input);
-
+    var(--input-background);
 
   color:
     var(--white);
 
+  font-family: inherit;
 
-  caret-color:
-    var(--gold);
+  font-size: 15px;
 
-
-  font:
-    500 15px
-    "DM Sans",
-    sans-serif;
-
+  font-weight: 500;
 
   transition:
 
-    border .25s ease,
+    border-color 0.25s ease,
 
-    background .25s ease,
+    background 0.25s ease,
 
-    box-shadow .25s ease,
-
-    transform .25s ease;
-
+    box-shadow 0.25s ease;
 }
 
-
-/* Placeholder */
 
 input::placeholder {
 
-  color: #78847e;
-
+  color:
+    #718399;
 }
 
-
-/* Hover */
 
 input:hover {
 
   border-color:
-    rgba(255,255,255,.20);
-
+    rgba(255,255,255,0.21);
 }
 
-
-/* Foco */
 
 input:focus {
 
   border-color:
-    rgba(232,196,106,.72);
-
+    rgba(91, 157, 220, 0.85);
 
   background:
-    rgba(255,255,255,.075);
-
+    rgba(255,255,255,0.075);
 
   box-shadow:
 
     0 0 0 4px
-    rgba(232,196,106,.09),
+    rgba(51, 125, 190, 0.13),
 
-    0 12px 28px
-    rgba(0,0,0,.13);
-
-}
-
-
-/* Ícone quando focado */
-
-.input-wrap:focus-within
-.input-icon {
-
-  stroke:
-    var(--gold);
-
+    0 0 20px
+    rgba(34, 104, 170, 0.08);
 }
 
 
 /* =========================================================
-   BOTÃO
+   BOTÃO DOURADO
    ========================================================= */
 
 button {
@@ -770,66 +683,49 @@ button {
   position: relative;
 
   width: 100%;
+  height: 56px;
 
-  min-height: 56px;
-
-
-  border: 0;
+  border: none;
 
   border-radius:
-    var(--radius-input);
-
-
-  padding:
-    0 20px;
-
+    var(--input-radius);
 
   background:
 
     linear-gradient(
       135deg,
-      #f1d27b 0%,
-      #d6ac4f 100%
+      #f3d985 0%,
+      #d0a94d 100%
     );
 
-
   color:
-    #172017;
+    #142235;
 
+  font-family: inherit;
 
-  font:
-    800 15px
-    "DM Sans",
-    sans-serif;
+  font-size: 15px;
 
+  font-weight: 800;
 
   cursor: pointer;
-
 
   box-shadow:
 
     0 10px 25px
-    rgba(205,163,67,.20),
+    rgba(207,166,72,0.22),
 
     inset 0 1px 0
-    rgba(255,255,255,.45);
-
+    rgba(255,255,255,0.40);
 
   transition:
 
-    transform .22s ease,
+    transform 0.2s ease,
 
-    box-shadow .22s ease,
+    box-shadow 0.2s ease,
 
-    filter .22s ease;
-
-
-  overflow: hidden;
-
+    filter 0.2s ease;
 }
 
-
-/* Brilho passando pelo botão */
 
 button::before {
 
@@ -837,99 +733,89 @@ button::before {
 
   position: absolute;
 
-  inset: 0;
+  top: 0;
+  left: -100%;
 
+  width: 70%;
+  height: 100%;
 
   background:
 
     linear-gradient(
-      110deg,
-      transparent 25%,
-      rgba(255,255,255,.30) 50%,
-      transparent 75%
+      100deg,
+      transparent,
+      rgba(255,255,255,0.28),
+      transparent
     );
 
-
   transform:
-    translateX(-120%);
-
+    skewX(-20deg);
 
   transition:
-    transform .65s ease;
-
+    left 0.6s ease;
 }
 
-
-/* Hover */
 
 button:hover:not(:disabled) {
 
   transform:
     translateY(-2px);
 
-
   filter:
     brightness(1.04);
 
-
   box-shadow:
 
-    0 14px 32px
-    rgba(205,163,67,.28),
+    0 15px 32px
+    rgba(207,166,72,0.30),
+
+    0 0 25px
+    rgba(231,197,104,0.10),
 
     inset 0 1px 0
-    rgba(255,255,255,.5);
-
+    rgba(255,255,255,0.50);
 }
 
 
 button:hover:not(:disabled)::before {
 
-  transform:
-    translateX(120%);
-
+  left: 130%;
 }
 
-
-/* Clique */
 
 button:active:not(:disabled) {
 
   transform:
     translateY(0);
-
 }
 
-
-/* Desabilitado */
 
 button:disabled {
 
   cursor: wait;
 
-  opacity: .78;
+  opacity: 0.70;
 
+  transform: none;
 }
 
 
 /* =========================================================
-   CONTEÚDO DO BOTÃO
+   CONTEÚDO BOTÃO
    ========================================================= */
 
 .button-content {
 
   position: relative;
 
-  z-index: 1;
+  z-index: 2;
 
   display: flex;
 
   align-items: center;
-
   justify-content: center;
 
   gap: 10px;
-
 }
 
 
@@ -940,13 +826,12 @@ button:disabled {
 .arrow {
 
   width: 18px;
-
   height: 18px;
-
 
   fill: none;
 
-  stroke: currentColor;
+  stroke:
+    currentColor;
 
   stroke-width: 2;
 
@@ -954,10 +839,8 @@ button:disabled {
 
   stroke-linejoin: round;
 
-
   transition:
-    transform .22s ease;
-
+    transform 0.2s ease;
 }
 
 
@@ -966,7 +849,6 @@ button:hover:not(:disabled)
 
   transform:
     translateX(3px);
-
 }
 
 
@@ -980,35 +862,28 @@ button:hover:not(:disabled)
 
   position: absolute;
 
+  top: 50%;
   left: 50%;
 
-  top: 50%;
-
-
   width: 20px;
-
   height: 20px;
-
 
   margin:
     -10px 0 0 -10px;
 
-
   border:
     2px solid
-    rgba(23,32,23,.25);
-
+    rgba(20,34,53,0.25);
 
   border-top-color:
-    #172017;
-
+    #142235;
 
   border-radius: 50%;
 
-
   animation:
-    spin .7s linear infinite;
-
+    spin 0.7s
+    linear
+    infinite;
 }
 
 
@@ -1016,7 +891,6 @@ button.loading
 .button-content {
 
   visibility: hidden;
-
 }
 
 
@@ -1024,7 +898,6 @@ button.loading
 .spinner {
 
   display: block;
-
 }
 
 
@@ -1036,7 +909,6 @@ button.loading
       rotate(360deg);
 
   }
-
 }
 
 
@@ -1050,28 +922,19 @@ button.loading
 
   margin-top: 14px;
 
-
-  border-radius: 13px;
-
+  border-radius: 12px;
 
   font-size: 13px;
 
   font-weight: 700;
 
-  line-height: 1.45;
-
-
-  transition: .25s ease;
-
+  line-height: 1.4;
 }
 
-
-/* Quando não há mensagem */
 
 #mensagem:empty {
 
   margin-top: 0;
-
 }
 
 
@@ -1084,19 +947,15 @@ button.loading
   padding:
     12px 14px;
 
-
   color:
     var(--success);
 
+  background:
+    rgba(70,150,94,0.10);
 
   border:
     1px solid
-    rgba(142,224,174,.18);
-
-
-  background:
-    rgba(70,150,94,.10);
-
+    rgba(142,224,174,0.18);
 }
 
 
@@ -1109,24 +968,20 @@ button.loading
   padding:
     12px 14px;
 
-
   color:
     var(--error);
 
+  background:
+    rgba(190,55,55,0.10);
 
   border:
     1px solid
-    rgba(255,155,155,.18);
-
-
-  background:
-    rgba(190,55,55,.10);
-
+    rgba(255,155,155,0.18);
 }
 
 
 /* =========================================================
-   AVISO INFERIOR
+   AVISO
    ========================================================= */
 
 .bottom-note {
@@ -1134,123 +989,102 @@ button.loading
   display: flex;
 
   align-items: center;
-
   justify-content: center;
 
   gap: 8px;
 
-
-  margin-top: 23px;
-
+  margin-top: 21px;
 
   color:
-    #7f8d86;
-
+    #78899c;
 
   font-size: 11px;
 
   font-weight: 600;
-
 }
 
 
 /* =========================================================
-   ÍCONE DE CHECK
+   CHECK
    ========================================================= */
 
 .check-circle {
 
-  display: inline-grid;
+  display: flex;
 
-  place-items: center;
-
+  align-items: center;
+  justify-content: center;
 
   width: 18px;
-
   height: 18px;
-
-
-  border:
-    1px solid
-    rgba(142,224,174,.24);
-
 
   border-radius: 50%;
 
-
   background:
-    rgba(142,224,174,.07);
+    rgba(142,224,174,0.07);
 
+  border:
+    1px solid
+    rgba(142,224,174,0.22);
 }
 
 
 .check-circle svg {
 
   width: 11px;
-
   height: 11px;
-
 
   fill: none;
 
   stroke:
     var(--success);
 
-
   stroke-width: 2.3;
 
   stroke-linecap: round;
 
   stroke-linejoin: round;
-
 }
 
 
 /* =========================================================
-   FOOTER
+   RODAPÉ
    ========================================================= */
 
 footer {
 
   display: flex;
 
-  justify-content: center;
-
   align-items: center;
+  justify-content: center;
 
   gap: 7px;
 
+  margin-top: 21px;
 
-  margin-top: 25px;
-
-  padding-top: 20px;
-
+  padding-top: 17px;
 
   border-top:
     1px solid
-    rgba(255,255,255,.07);
-
+    rgba(255,255,255,0.07);
 
   color:
-    #65736c;
-
+    #63768c;
 
   font-size: 10px;
 
   font-weight: 600;
 
-  letter-spacing: .45px;
+  letter-spacing: 0.5px;
 
   text-transform: uppercase;
-
 }
 
 
 .footer-separator {
 
   color:
-    var(--gold-dark);
-
+    var(--gold);
 }
 
 
@@ -1258,121 +1092,197 @@ footer {
    CELULAR
    ========================================================= */
 
-@media (max-width: 520px) {
+@media (max-width: 600px) {
 
   .page {
 
-    padding:
-      20px 13px;
+    align-items: center;
 
+    padding:
+      18px 12px;
   }
 
 
   .presence-card {
 
+    width: 100%;
+
+    max-width: 430px;
+
     padding:
-      30px 21px 23px;
+      29px 20px 22px;
 
-
-    border-radius:
-      25px;
-
+    border-radius: 23px;
   }
 
 
   .logo-wrap {
 
-    max-width:
-      300px;
+    width: 100%;
 
+    max-width: 300px;
+  }
+
+
+  .logo {
+
+    width: 100%;
+
+    max-width: 300px;
   }
 
 
   .heading {
 
-    margin-top:
-      27px;
+    margin:
+      24px 0 22px;
+  }
 
-    margin-bottom:
-      24px;
 
+  h1 {
+
+    font-size: 28px;
   }
 
 
   .heading p {
 
-    font-size:
-      13.5px;
+    font-size: 13px;
 
+    line-height: 1.55;
   }
 
 
   input,
   button {
 
-    min-height:
-      54px;
-
+    height: 54px;
   }
 
 }
 
 
 /* =========================================================
-   TELAS BAIXAS
+   CELULARES PEQUENOS
    ========================================================= */
 
-@media
-  (max-height: 760px)
-  and
-  (min-width: 521px) {
+@media (max-width: 380px) {
 
   .page {
 
-    padding-block:
-      18px;
-
+    padding:
+      12px 10px;
   }
 
 
   .presence-card {
 
-    padding-top:
-      28px;
+    padding:
+      24px 16px 19px;
 
-    padding-bottom:
-      22px;
+    border-radius:
+      21px;
+  }
 
+
+  .logo-wrap {
+
+    max-width: 265px;
+  }
+
+
+  .logo {
+
+    max-width: 265px;
   }
 
 
   .heading {
 
-    margin-top:
-      21px;
+    margin:
+      21px 0 19px;
+  }
 
-    margin-bottom:
-      19px;
 
+  h1 {
+
+    font-size: 25px;
+  }
+
+
+  .heading p {
+
+    font-size: 12.5px;
+  }
+
+
+  .event-badge {
+
+    font-size: 10px;
+
+    padding:
+      6px 11px;
   }
 
 
   .bottom-note {
 
-    margin-top:
-      17px;
-
+    margin-top: 17px;
   }
 
 
   footer {
 
-    margin-top:
-      18px;
+    margin-top: 17px;
 
-    padding-top:
-      15px;
+    padding-top: 14px;
+  }
 
+}
+
+
+/* =========================================================
+   CELULAR COM POUCA ALTURA
+   ========================================================= */
+
+@media
+  (max-height: 700px)
+  and
+  (max-width: 600px) {
+
+  .page {
+
+    align-items: flex-start;
+
+    padding-top: 12px;
+  }
+
+
+  .presence-card {
+
+    padding-top: 22px;
+  }
+
+
+  .heading {
+
+    margin-top: 17px;
+
+    margin-bottom: 17px;
+  }
+
+
+  .bottom-note {
+
+    margin-top: 14px;
+  }
+
+
+  footer {
+
+    margin-top: 14px;
+
+    padding-top: 12px;
   }
 
 }
@@ -1389,14 +1299,13 @@ footer {
   *::after {
 
     animation-duration:
-      .01ms !important;
+      0.01ms !important;
 
     animation-iteration-count:
       1 !important;
 
     transition-duration:
-      .01ms !important;
-
+      0.01ms !important;
   }
 
 }
