@@ -1,145 +1,207 @@
-// ========================================
-// CONFIGURAÇÃO
-// ========================================
+// =========================================================
+// LISTA DE PRESENÇA
+// ASSEMBLEIA DE DEUS SENA MADUREIRA
+// =========================================================
+
+
+// =========================================================
+// URL DO GOOGLE APPS SCRIPT
+// =========================================================
 
 const URL_SCRIPT =
-    "https://script.google.com/macros/s/AKfycbzb41RMu9FM6zmgoab2EtRiexLT6jmtR0A0Mgn4-a5CA2DGHCws8fo8GIwcwWjuVR7LWw/exec";
+  "https://script.google.com/macros/s/AKfycbzb41RMu9FM6zmgoab2EtRiexLT6jmtR0A0Mgn4-a5CA2DGHCws8fo8GIwcwWjuVR7LWw/exec";
 
 
-// ========================================
+// =========================================================
 // ELEMENTOS DA PÁGINA
-// ========================================
+// =========================================================
 
-const formulario = document.getElementById("formPresenca");
-const nomeInput = document.getElementById("nome");
-const botao = document.getElementById("botao");
-const mensagem = document.getElementById("mensagem");
+const formulario =
+  document.getElementById("formPresenca");
+
+const nomeInput =
+  document.getElementById("nome");
+
+const botao =
+  document.getElementById("botao");
+
+const textoBotao =
+  document.getElementById("textoBotao");
+
+const mensagem =
+  document.getElementById("mensagem");
 
 
-// ========================================
+// =========================================================
 // ENVIO DO FORMULÁRIO
-// ========================================
+// =========================================================
 
-formulario.addEventListener("submit", async function (event) {
+formulario.addEventListener(
+  "submit",
+  async (event) => {
 
     event.preventDefault();
 
-    const nome = nomeInput.value.trim();
+
+    // Pega o nome digitado
+
+    const nome =
+      nomeInput.value.trim();
 
 
-    // ========================================
-    // VERIFICAÇÃO DO NOME
-    // ========================================
+    // =====================================================
+    // VALIDAÇÃO
+    // =====================================================
 
-    if (nome === "") {
+    if (!nome) {
 
-        mostrarMensagem(
-            "Digite seu nome.",
-            "erro"
-        );
+      mostrarMensagem(
+        "Digite seu nome completo para continuar.",
+        "erro"
+      );
 
-        return;
+      nomeInput.focus();
+
+      return;
     }
 
 
-    // ========================================
-    // ALTERA O BOTÃO
-    // ========================================
+    if (nome.length < 3) {
+
+      mostrarMensagem(
+        "Digite seu nome completo.",
+        "erro"
+      );
+
+      nomeInput.focus();
+
+      return;
+    }
+
+
+    // =====================================================
+    // ATIVA O LOADING
+    // =====================================================
 
     botao.disabled = true;
 
-    botao.textContent = "Registrando...";
+    botao.classList.add("loading");
+
+    textoBotao.textContent =
+      "Registrando...";
 
     limparMensagem();
 
 
-    // ========================================
+    // =====================================================
     // ENVIA PARA O GOOGLE APPS SCRIPT
-    // ========================================
+    // =====================================================
 
     try {
 
-        await fetch(URL_SCRIPT, {
+      await fetch(
+        URL_SCRIPT,
+        {
 
-            method: "POST",
+          method: "POST",
 
-            mode: "no-cors",
+          mode: "no-cors",
 
-            headers: {
-                "Content-Type":
-                    "text/plain;charset=utf-8"
-            },
+          headers: {
 
-            body: JSON.stringify({
-                nome: nome
-            })
+            "Content-Type":
+              "text/plain;charset=utf-8"
 
-        });
+          },
+
+          body: JSON.stringify({
+            nome: nome
+          })
+
+        }
+      );
 
 
-        // ========================================
-        // SUCESSO
-        // ========================================
+      // ===================================================
+      // SUCESSO
+      // ===================================================
 
-        mostrarMensagem(
-            "✓ Presença registrada com sucesso!",
-            "sucesso"
-        );
+      mostrarMensagem(
+        "✓ Presença registrada com sucesso! Deus abençoe.",
+        "sucesso"
+      );
 
-        nomeInput.value = "";
+
+      // Limpa o campo
+
+      nomeInput.value = "";
 
 
     } catch (erro) {
 
-        // ========================================
-        // ERRO
-        // ========================================
+      // ===================================================
+      // ERRO
+      // ===================================================
 
-        console.error(
-            "Erro ao registrar presença:",
-            erro
-        );
+      console.error(
+        "Erro ao registrar presença:",
+        erro
+      );
 
-        mostrarMensagem(
-            "Não foi possível registrar a presença. Tente novamente.",
-            "erro"
-        );
+
+      mostrarMensagem(
+        "Não foi possível registrar agora. Verifique sua conexão e tente novamente.",
+        "erro"
+      );
 
 
     } finally {
 
-        // ========================================
-        // RESTAURA O BOTÃO
-        // ========================================
+      // ===================================================
+      // RESTAURA O BOTÃO
+      // ===================================================
 
-        botao.disabled = false;
+      botao.disabled = false;
 
-        botao.textContent =
-            "Marcar presença";
+      botao.classList.remove("loading");
+
+      textoBotao.textContent =
+        "Marcar presença";
+
     }
 
-});
+  }
+);
 
 
-// ========================================
+// =========================================================
 // MOSTRAR MENSAGEM
-// ========================================
+// =========================================================
 
-function mostrarMensagem(texto, tipo) {
+function mostrarMensagem(
+  texto,
+  tipo
+) {
 
-    mensagem.textContent = texto;
+  mensagem.textContent =
+    texto;
 
-    mensagem.className = tipo;
+  mensagem.className =
+    tipo;
+
 }
 
 
-// ========================================
+// =========================================================
 // LIMPAR MENSAGEM
-// ========================================
+// =========================================================
 
 function limparMensagem() {
 
-    mensagem.textContent = "";
+  mensagem.textContent =
+    "";
 
-    mensagem.className = "";
+  mensagem.className =
+    "";
+
 }
