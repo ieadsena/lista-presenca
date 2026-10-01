@@ -2,74 +2,267 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Lista de Presença</title>
+  <meta name="theme-color" content="#07110f">
+  <meta
+    name="description"
+    content="Lista de presença — Assembleia de Deus Sena Madureira."
+  >
 
-    <!-- Fonte moderna -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>Lista de Presença | Assembleia de Deus</title>
 
-    <link rel="stylesheet" href="style.css">
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <main class="pagina">
+  <!-- =====================================================
+       FUNDO
+       ===================================================== -->
 
-        <section class="card">
+  <div class="background" aria-hidden="true">
 
-            <!-- Logo sem caixa/fundo escuro -->
-            <div class="logo-container">
-                <img src="logo.jpeg" alt="Assembleia de Deus Sena Madureira 95 Anos" class="logo-img">
-            </div>
+    <div class="glow glow-1"></div>
 
-            <h1>Lista de Presença</h1>
+    <div class="glow glow-2"></div>
 
-            <p class="descricao">
-                Digite o seu nome completo abaixo para registrar a sua presença.
-            </p>
+    <div class="grid"></div>
 
-            <form id="formPresenca">
+  </div>
 
-                <div class="campo">
 
-                    <label for="nome">
-                        Nome completo
-                    </label>
+  <!-- =====================================================
+       PÁGINA
+       ===================================================== -->
 
-                    <input
-                        type="text"
-                        id="nome"
-                        name="nome"
-                        placeholder="Ex: João da Silva"
-                        autocomplete="name"
-                        required
-                    >
+  <main class="page">
 
-                </div>
+    <section class="presence-card" aria-labelledby="titulo">
 
-                <button
-                    type="submit"
-                    id="botao"
-                >
-                    Marcar presença
-                </button>
+      <!-- Linha dourada no topo -->
 
-            </form>
+      <div class="top-line"></div>
 
-            <div
-                id="mensagem"
-                aria-live="polite"
-            ></div>
 
-        </section>
+      <!-- =================================================
+           LOGO
+           ================================================= -->
 
-    </main>
+      <header class="brand">
 
-    <script src="script.js"></script>
+        <div class="logo-wrap">
+
+          <img
+            src="logo.png"
+            alt="Assembleia de Deus Sena Madureira — 95 anos"
+            class="logo"
+          >
+
+        </div>
+
+
+        <!-- Selo 95 anos -->
+
+        <div class="event-badge">
+
+          <span class="badge-dot"></span>
+
+          95 anos de história
+
+        </div>
+
+      </header>
+
+
+      <!-- =================================================
+           TÍTULO
+           ================================================= -->
+
+      <div class="heading">
+
+        <span class="eyebrow">
+       
+        </span>
+
+        <h1 id="titulo">
+          Lista de presença
+        </h1>
+
+        
+      </div>
+
+
+      <!-- =================================================
+           FORMULÁRIO
+           ================================================= -->
+
+      <form id="formPresenca" novalidate>
+
+        <div class="field">
+
+          <label for="nome">
+            Nome completo
+          </label>
+
+
+          <div class="input-wrap">
+
+            <!-- Ícone -->
+
+            <svg
+              class="input-icon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+
+              <path
+                d="M20 21a8 8 0 0 0-16 0"
+              />
+
+              <path
+                d="M12 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"
+              />
+
+            </svg>
+
+
+            <input
+              type="text"
+              id="nome"
+              name="nome"
+              placeholder="Digite seu nome completo"
+              autocomplete="name"
+              maxlength="120"
+              required
+            >
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             BOTÃO
+             ================================================= -->
+
+        <button
+          type="submit"
+          id="botao"
+        >
+
+          <span class="button-content">
+
+            <span id="textoBotao">
+              Marcar presença
+            </span>
+
+
+            <svg
+              class="arrow"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+
+              <path d="M5 12h13" />
+
+              <path d="M13 6l6 6-6 6" />
+
+            </svg>
+
+          </span>
+
+
+          <!-- Loading -->
+
+          <span
+            class="spinner"
+            aria-hidden="true"
+          ></span>
+
+        </button>
+
+      </form>
+
+
+      <!-- =================================================
+           MENSAGEM
+           ================================================= -->
+
+      <div
+        id="mensagem"
+        aria-live="polite"
+        role="status"
+      ></div>
+
+
+      <!-- =================================================
+           AVISO
+           ================================================= -->
+
+      <div class="bottom-note">
+
+        <span class="check-circle">
+
+          <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+
+            <path d="m7 12 3.2 3.2L17 8.5" />
+
+          </svg>
+
+        </span>
+
+        <span>
+          Leva apenas alguns segundos
+        </span>
+
+      </div>
+
+
+      <!-- =================================================
+           RODAPÉ
+           ================================================= -->
+
+      <footer>
+
+        <span>
+          Assembleia de Deus
+        </span>
+
+        <span class="footer-separator">
+          •
+        </span>
+
+        <span>
+          Sena Madureira
+        </span>
+
+      </footer>
+
+    </section>
+
+  </main>
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+       ===================================================== -->
+
+  <script src="script.js"></script>
 
 </body>
 
