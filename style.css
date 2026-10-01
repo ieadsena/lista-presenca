@@ -183,22 +183,18 @@ body {
    ========================================================= */
 
 .page {
-
   position: relative;
-
   z-index: 1;
 
   width: 100%;
-
   min-height: 100vh;
   min-height: 100svh;
 
   display: flex;
-
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 
-  padding: 25px 16px;
+  padding: 20px 14px;
 }
 
 
@@ -1245,48 +1241,20 @@ footer {
    CELULAR COM POUCA ALTURA
    ========================================================= */
 
-@media
-  (max-height: 700px)
-  and
-  (max-width: 600px) {
+@media (max-width: 600px) {
 
   .page {
-
-    align-items: flex-start;
-
-    padding-top: 12px;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-
 
   .presence-card {
-
-    padding-top: 22px;
-  }
-
-
-  .heading {
-
-    margin-top: 17px;
-
-    margin-bottom: 17px;
-  }
-
-
-  .bottom-note {
-
-    margin-top: 14px;
-  }
-
-
-  footer {
-
-    margin-top: 14px;
-
-    padding-top: 12px;
+    margin: auto;
   }
 
 }
-
 
 /* =========================================================
    ACESSIBILIDADE
