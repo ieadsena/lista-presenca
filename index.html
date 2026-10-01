@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lista de Presença</title>
+
+    <!-- Fonte moderna -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="pagina">
+
+        <section class="card">
+
+            <!-- Logo sem caixa/fundo escuro -->
+            <div class="logo-container">
+                <img src="logo.jpeg" alt="Assembleia de Deus Sena Madureira 95 Anos" class="logo-img">
+            </div>
+
+            <h1>Lista de Presença</h1>
+
+            <p class="descricao">
+                Digite o seu nome completo abaixo para registrar a sua presença.
+            </p>
+
+            <form id="formPresenca">
+
+                <div class="campo">
+
+                    <label for="nome">
+                        Nome completo
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nome"
+                        name="nome"
+                        placeholder="Ex: João da Silva"
+                        autocomplete="name"
+                        required
+                    >
+
+                </div>
+
+                <button
+                    type="submit"
+                    id="botao"
+                >
+                    Marcar presença
+                </button>
+
+            </form>
+
+            <div
+                id="mensagem"
+                aria-live="polite"
+            ></div>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
